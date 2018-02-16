@@ -1,0 +1,67 @@
+<html xmlns:ng="http://angularjs.org">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=11" />
+        <title>XtreamIT</title>
+        <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/navbar.css" rel="stylesheet" type="text/css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/ng-tags-input.css" />
+        <!-- <link rel="stylesheet" href="assets/css/footable.bootstrap.css"> -->
+        <link rel="stylesheet" href="https://fooplugins.github.io/FooTable/docs/css/prism.css">
+        <link rel="stylesheet" href="assets/css/footable.bootstrap.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/2.0.0/rzslider.min.css" />
+        <style>
+            [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-    ng-cloak {
+                display: none !important;
+            }
+        </style>
+    </head>
+    <body ng-app="mainApp" ng-controller="navbarController" ng-init="pageCheck()">
+         
+        
+    
+        <div ng-include src="$root.file" class="navbar-html"></div>
+        <div ng-include="'footer.html'" class="footer-html"></div>
+        
+        <ng-view></ng-view>
+
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        <script src ="assets/js/angular.min.js"></script>
+        <script src="assets/js/angular-route.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-cookies.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload-shim.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.js"></script>
+        <script src="assets/js/ng-tags-input.js"></script>
+        <script src="assets/js/app.js"></script>
+        <script src="assets/controllers/loginPageController.js"></script>
+        <script src="assets/controllers/navbarController.js"></script>
+        <script src="assets/js/services.js"></script>
+        <script src="assets/controllers/managementController.js"></script>
+        <script src="assets/controllers/profileController.js"></script>
+        <script src="assets/controllers/candidatelistController.js"></script>
+        <script src="assets/controllers/jobsController.js"></script>
+        <script src="assets/controllers/shortlistController.js"></script>
+        <script src="assets/controllers/screeningController.js"></script>
+        <script src="assets/controllers/schedulingController.js"></script>
+        <script src="assets/controllers/rejectedController.js"></script>
+        <script src="assets/controllers/offeredController.js"></script>
+        <script src="assets/controllers/deniedController.js"></script>
+        <script src="assets/controllers/startedController.js"></script>
+        <script src="assets/controllers/selectedController.js"></script>
+        <script src="assets/controllers/onholdController.js"></script>
+        <script src="https://fooplugins.github.io/FooTable/docs/js/prism.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+        <script src="https://fooplugins.github.io/FooTable/compiled/footable.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angularjs-slider/2.0.0/rzslider.min.js"></script>
+        
+    </body>
+
+</html>

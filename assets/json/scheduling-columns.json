@@ -1,0 +1,17 @@
+[
+    {"name":"Id","title":"S.No","breakpoints":"","type":"number","style":{"width":60,"maxWidth":90,"text-align":"center"}},
+    {"name":"Name","title":"Name" ,"style":{"width":250,"maxWidth":250,"text-align":"center"}},
+    {"name":"Level","title":"Level","style":{"width":200,"maxWidth":200,"text-align":"center"}},
+    {"name":"First_Round","title":"1st Round","breakpoints":"xs","style":{"width":150,"maxWidth":150,"text-align":"center"}},
+    {"name":"First-Round_Date","title":"Date","breakpoints":"xs","style":{"width":230,"maxWidth":230,"text-align":"center"}},
+    {"name":"Second_Round","title":"2nd Round","breakpoints":"xs sm","style":{"width":300,"max-width":300,"text-align":"center"}},
+    {"name":"Second_Round_Date","title":"Date","breakpoints":"xs sm md","style":{"width":180,"max-width":180,"text-align":"center"}},
+    {"name":"Final_Round","title":"Final Round","breakpoints":"xs sm md","style":{"width":100,"maxWidth":100,"text-align":"center"}},
+    {"name":"Final_Round_Date","title":"Date","breakpoints":"xs sm md","style":{"text-align":"center"}},
+    {"name":"F2F","title":"F2F","style":{"text-align":"center"}},
+    {"name":"Comm_Skills","title":"Comm Skills","style":{"text-align":"center"}},
+    {"name":"Rating","title":"Rating","style":{"text-align":"center"}},
+    {"name":"CTC","title":"CTC","style":{"text-align":"center"}},
+    {"name":"Expected","title":"Expected","style":{"text-align":"center"}},
+    {"name":"Start_Notice","title":"Start/Notice","style":{"text-align":"center"}}
+  ]

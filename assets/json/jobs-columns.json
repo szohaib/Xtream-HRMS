@@ -1,0 +1,11 @@
+[
+    {"name":"Id","title":"S.No","breakpoints":"","type":"number","style":{"width":60,"maxWidth":90,"text-align":"center"}},
+    {"name":"Name","title":"Jobs Title" ,"style":{"width":250,"maxWidth":250,"text-align":"center"}},
+    {"name":"Project_Vacancy","title":"Project","style":{"width":250,"maxWidth":250,"text-align":"center"}},
+    {"name":"Created_DT","title":"Created Date","breakpoints":"xs","style":{"width":250,"maxWidth":250,"text-align":"center"}},
+    {"name":"Created","title":"Created By","breakpoints":"xs","style":{"width":230,"maxWidth":230,"text-align":"center"}},
+    {"name":"StartRange", "title":"minValue","visible":false},
+    {"name":"EndRange","title":"maxValue","visible":false},
+    {"name":"Experience","title":"Experience","visible":false},
+    {"name":"Vacancy_Comments","title":"Comments","visible":false}
+  ]

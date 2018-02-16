@@ -1,0 +1,259 @@
+<div class="wrapper">
+        
+    
+    
+    <div id="content">
+        <nav class="navbar navbar-default top-navbar">
+            <div class="">
+                <div class="navbar-header">
+                    <button type="button" id="sidebarCollapse" class="btn btn-inf navbar-btn">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <div class="row pull-right details">  
+                        <p class="upper col-md-9 hidden-sm hidden-xs top-md-header">{{current}}</p><i class="fa fa-user-circle-o col-md-3 hidden-sm hidden-xs top-md-icon"></i>
+                        <p class="upper col-md-9 visible-xs top-xs-header">{{current}}</p><i class="fa fa-user-circle-o top-xs-icon col-md-3 visible-xs"></i>
+                      </div>  
+                   
+                    <!-- <ul class="text-center">
+                        <li class="list-unstyled">
+                            <div class="row">
+                                <p class="top-header  visible-xs">{{current}}</p><i class="fa fa-user-circle-o  visible-xs"></i>
+                            </div>    
+                        </li>
+                    </ul> -->
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid custom-container">
+                <ul class="nav nav-tabs pull-right">
+                        <li class=""><a data-toggle="tab" href="#!scheduling">Scheduling</a></li>
+                        <li class="active"><a data-toggle="tab" href="#!screening">Screening</a></li>
+                </ul>
+           
+                <table  id="scheduling-table" class="table table-bordered table-stripe custom-footable" data-paging="true" data-filtering="true" data-editing="true" data-editing-column='{"title":"Actions","style":{"text-align":"center"}}' ></table>  
+                       
+        </div>
+        
+    </div> 
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade custom-modal" id="editor-modal2" tabindex="-1" role="dialog" aria-labelledby="editor-title2" >
+        <style scoped>
+            /* provides a red astrix to denote  fields - this should be included in common stylesheet */
+            .form-group.required .control-label:after {
+                content:"*";
+                color:red;
+                margin-left: 4px;
+            }
+        </style>
+        <div class="modal-dialog " role="document">
+            <form class="modal-content" id="editor2">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h6 class="white">Screening Details</h6>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+
+                    <div class="form-group col-md-6">
+                        <input type="hidden" id="Id2" ng-model="Id2">
+                        <label>Candidate Name:</label>
+                        <input type="text" id="name2" class="form-control" ng-model="name2">
+                    </div>
+                    <div class="form-group col-md-6">    
+                    <label>Phone Number:</label><input type="text" id="phone2" class="form-control" ng-model="phone2">
+                    </div>
+                    <div class="form-group col-md-6">
+                    <label>Email Id:</label><input type="text" id="email2" class="form-control" ng-model="email2">
+                    </div>
+                    <div class="form-group col-md-6">
+                    <label>Interview Date:</label><input type="text" id="date2" class="form-control" ng-model="date2">
+                    </div>
+                    <div class="form-group col-md-4">
+                    <label>Interview Time:</label><input type="text" id="time2" class="form-control" ng-model="time2">
+                    </div>
+                    <div class="form-group col-md-4">
+                    <label>Round 1:</label><input type="text" id="r1_2" class="form-control" ng-model="r1_2">
+                    </div>
+                    <div class="form-group col-md-4">
+                    <label>Type:</label><input type="text" id="r1t_2" class="form-control" ng-model="r1t_2">
+                    </div>
+                    <div class="form-group col-md-12">
+                    <label>Round 1 Comments:</label><input type="text" class="form-control" id="r1c_2" ng-model="r1c_2">
+                    </div>
+                    <div class="form-group col-md-3">
+                    <label>Round 2:</label><input type="text" id="r2_2" class="form-control" ng-model="r2_2">
+                    </div>
+                    <div class="form-group col-md-3">
+                    <label>Type:</label><input type="text" id="r2t_2" class="form-control" ng-model="r2t_2">
+                    </div>
+                    <div class="form-group col-md-3">
+                    <label>Round 3:</label><input type="text" id="r3_2" class="form-control" ng-model="r3_2">
+                    </div>
+                    <div class="form-group col-md-3">
+                    <label>Type:</label><input type="text" id="r3t_2" class="form-control" ng-model="r3t_2">
+                    </div>
+                    <div class="form-group col-md-12">
+                    <label>Round 2 Comments:</label><input type="text" id="r2c_2" class="form-control" ng-model="r2c_2">
+                    </div>
+                    <div class="form-group col-md-12">
+                    <label>Round 3 Comments:</label><input type="text" id="r3c_2" class="form-control" ng-model="r3c_2">
+                    </div>
+                    <div class="form-group col-md-12">
+                      <h6>Finalization</h6>  
+                    </div>
+                    <div class="form-group col-md-4">
+                    <label>Status:</label>
+                    <select ng-model="status" class="form-control" id="status">
+                        <option value="1">Rejected</option>
+                        <option value="2">Selected</option>
+                        <!-- <option value="3">Started/Joined</option>
+                        <option value="4">Offer Denied</option>
+                        <option value="5">On Hold</option> -->
+                    </select>
+                    </div>
+                    <div class="form-group col-md-8">
+                    <label>Reason:</label><input type="text" id="reason" class="form-control" ng-model="reason">
+                    </div>
+                    </div>
+                </div>
+                
+                    <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="updateScreen();" >Save changes</button>
+                    <button type="button" class="btn btn-default" id="btnClose" data-dismiss="modal">Cancel</button>
+                </div>
+                   
+                
+            </form>
+            </div>
+        </div>
+    
+
+    <script>
+    
+            $(document).ready(function(){
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').toggleClass('active');
+                });
+
+                $.ajax({
+            async: false,
+            type: "GET",
+            url: "http://202.153.46.138:82/api/Job/getScreening",
+            contentType: "application/json; charset=utf-8",
+            crossDomain: true,
+            dataType: "json",
+            success: function(data, status, jqXHR){
+                
+                screenData = data;
+            },
+            
+            error: function (jqXHR, status) {
+                                // error handler
+                console.log(jqXHR);
+                alert('fail ' + status.code);
+            }
+
+        });
+        var l =[];
+        for(var i=0;i<screenData.length;i++)
+        {
+            var lol = screenData[i].Interview_Dt;
+            lol = lol.substring(0,10);
+            screenData[i]['Date'] = lol;
+        }
+
+                var $modal = $('#editor-modal2'),
+		    $editor = $('#editor2'),
+		    $editorTitle = $('#editor-title2'),
+        ft = FooTable.init('#scheduling-table', {
+            "columns":[
+                {"name":"Id","title":"S.No.","visible":false,"style":{"width":0,"maxWidth":0,"text-align":"center"}},
+                {"name":"Candidate_Name", "title":"Name","style":{"width":160,"maxWidth":190,"text-align":"center"}},
+                {"name":"Phone","title":"Phone Number","breakpoints":"xs","type":"number","style":{"width":60,"maxWidth":90,"text-align":"center"},"visible":false},
+                {"name":"Email_Id","title":"Email","breakpoints":"xs","style":{"width":190,"maxWidth":190,"text-align":"center"}},
+                {"name":"Interview_Dt","title":"Interview Date","style":{"width":60,"maxWidth":80,"text-align":"center"},"visible":false},
+                {"name": "Date","title":"Interview Date","style":{"width":60,"maxWidth":80,"text-align":"center"} },
+                {"name":"Round1","title":"Round1","breakpoints":"xs","style":{"text-aign":"center","width":60,"max-width":80}},
+                {"name":"Round1Type","title":"Round1-Type","visible":false},
+                {"name":"Round1_Comments","title":"Round1 Comments","breakpoints": "xs sm","style":{"text-align":"center",}},
+                {"name":"Round2","title":"Round2","breakpoints": "xs sm","style":{"text-align":"center"}},
+                {"name":"Round2Type","title":"Round2-Type","visible":false,"style":{"text-align":"center"}},
+                {"name":"Round2_Comments","title":"Round2 Comments","breakpoints": "xs sm","style":{"text-align":"center"}},
+                {"name":"Round3","title":"Round3","breakpoints": "xs sm md","style":{"text-align":"center"}},
+                {"name":"Round3Type","title":"Round3-Type","visible":false,"style":{"text-align":"center"}},
+                {"name":"Round3_Comments","title":"Round3 Comments","breakpoints": "xs sm md","style":{"text-align":"center"}},
+                {"name":"Final_Status_Id","visible":false},
+                {"name":"Status_Reason","visible":false},
+                {"name":"Interview_Time","visible":false}
+            ],
+            "rows": screenData,
+            editing: {
+                alwaysShow:true,
+				addRow: function(){
+					$modal.removeData('row');
+					$editor[0].reset();
+					$editorTitle.text('Add a new row');
+					$modal.modal('show');
+				},
+				editRow: function(row){
+                    var values = row.val();
+                    $editor.find('#id2').val(values.Id);
+                    $editor.find('#name2').val(values.Candidate_Name);
+                    $editor.find('#email2').val(values.Email_Id);
+                    $editor.find('#phone2').val(values.Phone);
+                    var lol = values.Interview_Dt;
+                    var date2 = new Date(Date.parse(lol));
+                    $editor.find('#date2').val((date2.getMonth() + 1) + "/" + (date2.getUTCDate()) + "/" +date2.getFullYear() );
+                    $editor.find('#time2').val(values.Interview_Time);
+                    $editor.find('#r1_2').val(values.Round1);
+                    $editor.find('#r1t_2').val(values.Round1Type);
+                    $editor.find('#r1c_2').val(values.Round1_Comments);
+                    $editor.find('#r2_2').val(values.Round2);
+                    $editor.find('#r2t_2').val(values.Round2Type);
+                    $editor.find('#r2c_2').val(values.Round2_Comments);
+                    $editor.find('#r3_2').val(values.Round3);
+                    $editor.find('#r3t_2').val(values.Round3Type);
+                    $editor.find('#r3c_2').val(values.Round3_Comments);
+                    $editor.find('#status').val(values.Final_Status_Id);
+                    $editor.find('#reason').val(values.Status_Reason);
+                    //$editor.find('#time2').val(values.Interview_Time);
+
+					$modal.data('row', row);
+					$editorTitle.text('Interview Schedule');
+					$modal.modal('show');
+				},
+				deleteRow: function(row){
+					if (confirm('Are you sure you want to delete the row?')){
+                        row.delete();
+                        
+                        var r = row.value.Id;
+                        console.log(r);
+                        $.ajax({
+                            type: "POST",
+                            url: "http://202.153.46.138:82/api/Job/deleteScreening/"+r,
+                            //data: JSON.stringify(data),// now data come in this function
+                            contentType: "application/json; charset=utf-8",
+                            crossDomain: true,
+                            dataType: "json",
+                            success: function (data, status, jqXHR) {
+
+                                alert("Success");
+                                location.reload();
+                            },
+
+                            error: function (jqXHR, status) {
+                                // error handler
+                                console.log(jqXHR);
+                                alert('fail ' + status.code);
+                            }
+                        });
+					}
+				}
+			}   
+
+        });
+    });

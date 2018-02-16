@@ -1,0 +1,289 @@
+<div class="wrapper" ng-init="initCall()">
+    
+    <div id="content">
+        <nav class="navbar navbar-default top-navbar">
+            <div class="">
+                <div class="navbar-header">
+                    <button type="button" id="sidebarCollapse" class="btn btn-inf navbar-btn">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <div class="row pull-right details">  
+                        <p class="upper col-md-9 hidden-sm hidden-xs top-md-header">{{current}}</p><i class="fa fa-user-circle-o col-md-3 hidden-sm hidden-xs top-md-icon"></i>
+                        <p class="upper col-md-9 visible-xs top-xs-header">{{current}}</p><i class="fa fa-user-circle-o top-xs-icon col-md-3 visible-xs"></i>
+                      </div>  
+                   
+                    <!-- <ul class="text-center">
+                        <li class="list-unstyled">
+                            <div class="row">
+                                <p class="top-header  visible-xs">{{current}}</p><i class="fa fa-user-circle-o  visible-xs"></i>
+                            </div>    
+                        </li>
+                    </ul> -->
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid custom-container">
+            <div class="row">
+                <div class="col-md-3 col-xs-12">
+                    <select class="form-control" ng-model="search.Skill_ids" ng-change="callJobShortlist(search.Skill_ids);">
+                        <option ng-repeat="job in unique">{{job}}</option>
+                    </select>
+                </div>
+                <div class="ht-sm"></div>
+                
+                <div class="col-md-8 col-xs-10">
+                    <div class="input-group">
+                        <input type="text" class="form-control jobs-search" placeholder="Search for..." ng-model="all">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary search-button" type="button"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>  
+                </div>
+                <div class="col-md-1 col-xs-2">
+                    <button class="btn btn-default reset-button" ng-click="ResetJob();"><i class="fa fa-refresh"></i></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 for-shortlist-panel">
+                    <div class="row">
+                       <div class="col-md-12">
+                        <button type="button" class="btn btn-primary shortlist-button pull-right" ng-click="finalCall();">Shortlist</button>
+                    </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="scrollbar" id="style-1">
+                            <div class="force-overflow">
+                                <div class="col-md-12">    
+                                    <div class="panel panel-default shortlist-panel col-md-12" ng-repeat="detail in globalDetails | filter: all">
+                                        <div class="panel-body" >
+                                            <div class="row ">
+                                                <div class="col-md-11 col-xs-9 col-sm-10">
+                                                    <div class="col-md-6 col-xs-12 col-sm-6">
+                                                        <!-- <label>Id:</label>{{ detail.Id }} -->
+                                                        <p><label>Name :</label> {{ detail.First_Name }} {{ detail.Last_Name }}</p>
+                                                    </div>
+                                                    <div class="col-md-6 col-xs-12 col-sm-6">
+                                                        <p><label>Experience :</label> {{ detail.Exeperience }} Year(s)</p>
+                                                    </div> 
+                                                    <!-- <div class="row-break"></div> -->
+                                                    <div class="col-md-6 col-xs-12 col-sm-6">
+                                                            <p><label>Expected CTC (In Lakhs) :</label> {{ detail.Expected_CTC }}</p>
+                                                        </div> 
+                                                    <div class="col-md-6 col-xs-12 col-sm-6">
+                                                            <p><label>Skillset :</label> <span ng-repeat="skill in detail.Skill_ids"> {{ skill }} , </span> </p>
+                                                        </div> 
+                                                    <!-- <div class="row-break"></div> -->
+                                                    <div class="row pull-right">
+                                                        <div class="col-md-12">
+                                                            <button type="button" class="btn btn-primary btn-sm view-button" data-toggle="modal" data-target="#PrevModal" ng-click="viewAll(detail.Id);"><i class="fa fa-id-card-o"></i>View All</button>
+                                                        </div>
+                                                    </div>                                        
+                                                </div>
+                                                <br>
+                                                <div class="col-md-1 col-xs-3 col-sm-2">
+                                                    <input type="checkbox" ng-model="detail.isChecked" ng-change="shortlistCall(detail.isChecked, detail.Id)" ng-disabled="!search.Skill_ids || search.Skill_ids.length == 0" class="form-check-input">
+                                                </div>
+                                             </div>
+                                        </div>
+                                        <!-- Modal -->
+                                            <div id="PrevModal" class="modal fade custom-modal" role="dialog">
+                                                <div class="modal-dialog">
+                                            
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">View All</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                            <div class="row">
+                                                    <span ng-repeat = "view in viewall">
+                                                        <ul class="container-fluid">
+                                                          
+                                                            <li class="col-md-6">
+                                                                <label>Name:</label> {{view.First_Name}} {{view.Last_Name}}
+                                                            </li>
+                                                            <li class="col-md-6">
+                                                                <label>Email ID:</label> {{view.Email_Id}}
+                                                            </li>
+                                                          
+                                                          
+                                                            <!-- <br> -->
+                                                            <!-- <br> -->
+                                                           
+                                                            <li class="col-md-6">
+                                                                <label>Nationality:</label> {{view.Nationality}}
+                                                            </li>
+                                                            <li class="col-md-6">
+                                                                <label>Age:</label> {{view.Age}}
+                                                            </li>
+                                                          
+                                                          <hr>
+                                                         
+                                                            <li class="col-md-6">
+                                                                <label>Experience(In Years):</label> {{view.Exeperience}}
+                                                            </li>
+                                                            <li class="col-md-6">
+                                                                <label>Current CTC(In Lakhs):</label> {{view.Current_CTC}}
+                                                            </li>
+                                                          
+                                                           
+                                                            <li class="col-md-6">
+                                                                <label>Expected CTC(In Lakhs):</label> {{view.Expected_CTC}}
+                                                            </li>
+                                                            </ul>
+                                                            </span>
+                                                            <!-- <li>{{ view.First_Name }} {{ view.Last_Name}}</li>
+                                                            <li>{{view.Exeperience}}</li>
+                                                            <li>{{view.Email_Id}}</li>
+                                                            <li>{{view.Expected_CTC}}</li> -->
+                                                    </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            
+                                                </div>
+                                            </div>
+                                    </div> 
+                                 </div>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+                
+                    </div>
+                    
+                </div>
+                
+            </div>
+  
+
+
+
+<!-- <div class="wrapper" ng-init="initCall();">
+    <div ng-include="'navbar.html'"></div>
+    <div id="content"> -->
+            <!-- <nav class="navbar navbar-default top-navbar">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-inf navbar-btn">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="text-center">
+                                <li class="list-unstyled">
+                                    <p class="top-header hidden-xs">You are logged in as : {{current}}</p>
+                                    <p class="top-header visible-xs">Logged in as : {{current}}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav> -->
+
+                <!-- <div class="container-fluid shortlist-container">
+                    <div class="col-md-8 col-sm-9"> -->
+                        <!-- <div class="shortlist-full-container">
+                            <div class="search-container">
+                                <div class="row">
+                                    <div class="col-md-5 col-xs-5">
+                                       
+                                        <select class="form-control jobs-select" ng-model="search.Skill_ids">
+                                            <option ng-repeat="job in unique">{{job}}</option>
+                                        </select>
+                                        
+                                    </div>
+                                    <div class="col-md-6 col-xs-6">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control jobs-search" placeholder="Search for..." ng-model="all">
+                                            <span class="input-group-btn">
+                                              <button class="btn btn-primary search-button" type="button"><i class="fa fa-search"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 col-xs-1">
+                                        <button class="btn btn-default reset-button" ng-click="ResetJob();"><i class="fa fa-refresh"></i></button>
+                                    </div>
+                                </div> 
+                                <div class="row">
+                                    <div class="col-md-12 col-xs-12">
+                                        <button type="button" class="btn btn-primary shortlist-button pull-right" ng-click="finalCall();">Shortlist</button>
+                                    </div>    
+                                </div>    
+                            </div>
+                        </div> -->
+                            
+                        <!-- <div class="scrollbar" id="style-1">
+                            <div class="force-overflow">
+                                <div class="shortlist-panel-container col-md-12">    
+                                    <div class="panel panel-default shortlist-panel" ng-repeat="detail in globalDetails | filter: search | filter: all">
+                                        <div class="panel-body" >
+                                            <div class="row ">
+                                                <div class="col-md-10 col-xs-10">
+                                                    <div class="col-md-7 col-xs-12">
+                                                        <p><label>Name :</label> {{ detail.First_Name }} {{ detail.Last_Name }}</p>
+                                                    </div>
+                                                    <div class="col-md-5 col-xs-12">
+                                                        <p><label>Experience :</label> {{ detail.Exeperience }} Year(s)</p>
+                                                    </div> -->
+                                                    <!-- <div class="row-break"></div> -->
+                                                    <!-- <div class="col-md-7 col-xs-12">
+                                                        <p><label>E-Mail :</label> {{ detail.Email_Id }}</p>
+                                                    </div> -->
+                                                    <!-- <div class="col-md-3">
+                                                        <p>Id : {{ detail.Id }}</p>
+                                                    </div> -->
+                                                        
+                                                    <!-- <div class="col-md-5 col-xs-12">
+                                                        <p><label>Expected CTC (In Lakhs) :</label> {{ detail.Expected_CTC }}</p>
+                                                    </div> -->
+                                                    <!-- <div class="row-break"></div> -->
+                                                    <!-- <div class="col-md-12 col-xs-12">
+                                                        <p><label>Skillset :</label> <span ng-repeat="skill in detail.Skill_ids"> {{ skill }}</span> </p>
+                                                    </div>                                        
+                                                </div>
+                                                <br>
+                                                <div class="col-md-2 col-xs-2">
+                                                    <input type="checkbox" ng-model="detail.isChecked" ng-change="shortlistCall(detail.isChecked, detail.Id)" class="form-check-input">
+                                                </div> -->
+                                            <!-- </div>
+                                        </div>
+                                    </div> -->
+                                        <!-- <div class="">
+                                            Filter<br />
+                                            <input type="checkbox" ng-model="all.First_Name">Name<br/>
+                                            <input type="checkbox" ng-model="all.Email_Id">Email ID<br />
+                                            <input type="checkbox" ng-model="all.Exeperience">Experience<br />
+                                            <input type="checkbox" ng-model="all.Expected_CTC">Expected CTC<br />
+                                        </div> -->
+                                <!-- </div>    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+
+                    </div>
+                </div>
+    </div>
+</div> -->
+
+
+<script>
+    
+                   
+            
+    $(document).ready(function(){
+        $('#sidebarCollapse').on('click', function () {
+                        $('#sidebar').toggleClass('active');
+                    })
+
+                    
+                });
+
+</script>                    

@@ -1,0 +1,292 @@
+
+    <div class="wrapper" ng-cloak ng-init="navbar()">
+        
+        <div id="content">
+            <nav class="navbar navbar-default top-navbar">
+                <div class="">
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="btn btn-inf navbar-btn">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                          <div class="row pull-right details">  
+                            <p class="upper col-md-9 hidden-sm hidden-xs top-md-header">{{current}}</p><i class="fa fa-user-circle-o col-md-3 hidden-sm hidden-xs top-md-icon"></i>
+                            <p class="upper col-md-9 visible-sm top-xs-header">{{current}}</p><i class="fa fa-user-circle-o top-xs-icon col-md-3 visible-sm "></i>
+                          </div>  
+                       
+                        <!-- <ul class="text-center">
+                            <li class="list-unstyled">
+                                <div class="row">
+                                    <p class="top-header  visible-xs">{{current}}</p><i class="fa fa-user-circle-o  visible-xs"></i>
+                                </div>    
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+            </nav>
+            <div class="container-fluid custom-container">
+              <div class="panel-container">  
+                <div class="row">
+                    <div class="panel panel-default custom-panel p-1 col-md-2 col-xs-12 col-md-offset-1">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <i class="fa fa-bar-chart fa-3x"></i>
+                                </div>
+                                <div class="col-md-6 pull-right panel-content">
+                                    <p class="panel-number">{{ inPool }}</p>
+                                    <p class=" panel-foot">Pool</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default custom-panel p-2 col-md-2 col-xs-12">
+                        <div class="panel-body">
+                            <div class="row">
+                                            <div class="col-md-6">
+                                                <i class="fa fa-bar-chart fa-3x"></i>
+                                            </div>
+                                            <div class="col-md-6 pull-right panel-content">
+                                                <p class="panel-number">{{ inPool }}</p>
+                                                <p class=" panel-foot">Pool</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default custom-panel p-3 col-md-2 col-xs-12">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <i class="fa fa-bar-chart fa-3x"></i>
+                                                </div>
+                                                <div class="col-md-6 pull-right panel-content">
+                                                    <p class="panel-number">{{ inPool }}</p>
+                                                    <p class=" panel-foot">Pool</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default custom-panel p-4 col-md-2 col-xs-12">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <i class="fa fa-bar-chart fa-3x"></i>
+                                                    </div>
+                                                    <div class="col-md-6 pull-right panel-content">
+                                                        <p class="panel-number">{{ inPool }}</p>
+                                                        <p class=" panel-foot">Pool</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default custom-panel p-5 col-md-2 col-xs-12">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <i class="fa fa-bar-chart fa-3x"></i>
+                                                        </div>
+                                                        <div class="col-md-6 pull-right panel-content">
+                                                            <p class="panel-number">{{ inPool }}</p>
+                                                            <p class=" panel-foot">Pool</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                
+                </div>
+                </div>
+                <!-- <div class="row panel-row">
+                    <div class="col-md-6 col-lg-4 col-sm-6">
+                        <div class="panel panel-default custom-panel p-1">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <i class="fa fa-bar-chart fa-3x"></i>
+                                    </div>
+                                    <div class="col-md-6 pull-right panel-content">
+                                        <p class="panel-number">{{ inPool }}</p>
+                                        <p class=" panel-foot">Pool</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="col-md-6 col-lg-4 col-sm-6">
+                        <div class="panel panel-default custom-panel p-2">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <i class="fa fa-bar-chart fa-3x"></i>
+                                    </div>
+                                    <div class="col-md-6 pull-right panel-content">
+                                        <p class="panel-number">780</p>
+                                        <p class=" panel-foot">Screening</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 col-sm-6">
+                        <div class="panel panel-default custom-panel p-3">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <i class="fa fa-bar-chart fa-3x"></i>
+                                    </div>
+                                    <div class="col-md-6 pull-right panel-content">
+                                        <p class="panel-number">780</p>
+                                        <p class=" panel-foot">Offered</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="col-md-6 col-lg-4 col-sm-6">
+                        <div class="panel panel-default custom-panel p-4">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <i class="fa fa-bar-chart fa-3x"></i>
+                                    </div>
+                                    <div class="col-md-6 pull-right panel-content">
+                                        <p class="panel-number">780</p>
+                                        <p class=" panel-foot">Started</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 col-sm-6">
+                        <div class="panel panel-default custom-panel p-5">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <i class="fa fa-bar-chart fa-3x"></i>
+                                    </div>
+                                    <div class="col-md-6 pull-right panel-content">
+                                        <p class="panel-number">780</p>
+                                        <p class=" panel-foot">Denied</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 col-sm-6">
+                        <div class="panel panel-default custom-panel p-6">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <i class="fa fa-bar-chart fa-3x"></i>
+                                    </div>
+                                    <div class="col-md-6 pull-right panel-content">
+                                        <p class="panel-number">780</p>
+                                        <p class=" panel-foot">Denied</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+                </div> -->
+                <hr>
+                <div class="jobs-chart-table-container">
+                <div class="row chart-table-row">
+                    <div class="col-lg-6 col-md-12 jobs-table-col" >
+                        <h5 class="upper" style="font-weight:700">Jobs</h5>
+                            <table id="management-table" class="table table-bordered table-stripe custom-footable" data-paging-size="8" data-paging="true"  data-filtering="" data-editing=""></table>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="chart-container">
+                            <canvas id="myChart"></canvas>
+                        </div>    
+                   </div> 
+                </div>
+                </div>
+                <hr>
+                <div class="hires-container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="upper">Recent Hires</h5>
+                            <table id="hires-table" class="table table-bordered table-stripe custom-footable" data-paging-size="5" data-paging="true"  data-filtering="" data-editing=""></table>
+                            
+                    </div>
+                </div> 
+                
+                </div> 
+                  
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["Interns", "Fulltime", "T1", "T2", "T3", "T4"],
+            datasets: [{
+                label:"HIRES OF 2017",
+                data: [6, 3, 3.2, 4, 2, 3.5],
+                backgroundColor: [
+                    'rgba(42, 63, 107, 1)',
+                    'rgba(42, 63, 107, 1)',
+                    'rgba(42, 63, 107, 1)',
+                    'rgba(42, 63, 107, 1)',
+                    'rgba(42, 63, 107, 1)',
+                    'rgba(42, 63, 107, 1)'
+                ],
+            }]
+        },
+        options: {
+            legend:{
+                display:true,
+                labels:{
+                    fontSize:13,
+                    fontFamily: "Quicksand",
+                    fontStyle: 700,
+                }
+            },
+            responsive:true,
+            maintainAspectRatio:false,
+            scales: {
+                xAxes: [{
+                    barPercentage: 0.2,
+                    ticks:{
+                        fontSize:13,
+                        fontFamily: "Quicksand",
+                        fontStyle : "bold"
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true,
+                        fontSize:13,
+                        fontFamily:"Quicksand",
+                        fontStyle:"bold"
+                    }
+                }]
+            }
+        }
+       
+    });
+    ctx.style.backgroundColor = 'white';
+         $(document).ready(function () {
+                    $('#sidebarCollapse').on('click', function () {
+                        $('#sidebar').toggleClass('active');
+                    });
+                });
+        jQuery(function($){
+	var 
+		ft2 = FooTable.init('#management-table', {
+            "columns": $.get("assets/json/management-columns.json"),
+			"rows": $.get("assets/json/management-rows.json"),
+        })
+        ft3 = FooTable.init('#hires-table', {
+            "columns": $.get("assets/json/hires-columns.json"),
+			"rows": $.get("assets/json/hires-rows.json"),
+        })
+    });
+    
+                  
+                     
+    </script>

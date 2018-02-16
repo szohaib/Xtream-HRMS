@@ -1,0 +1,101 @@
+<div class="wrapper">
+    
+    <div id="content">
+        <nav class="navbar navbar-default top-navbar">
+            <div class="">
+                <div class="navbar-header">
+                    <button type="button" id="sidebarCollapse" class="btn btn-inf navbar-btn">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <div class="row pull-right details">  
+                        <p class="upper col-md-9 hidden-sm hidden-xs top-md-header">{{current}}</p><i class="fa fa-user-circle-o col-md-3 hidden-sm hidden-xs top-md-icon"></i>
+                        <p class="upper col-md-9 visible-xs top-xs-header">{{current}}</p><i class="fa fa-user-circle-o top-xs-icon col-md-3 visible-xs"></i>
+                      </div>  
+                   
+                    <!-- <ul class="text-center">
+                        <li class="list-unstyled">
+                            <div class="row">
+                                <p class="top-header  visible-xs">{{current}}</p><i class="fa fa-user-circle-o  visible-xs"></i>
+                            </div>    
+                        </li>
+                    </ul> -->
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid custom-container">
+            <table  style="margin-top:20px" id="rejected-table" class="table table-bordered table-stripe custom-footable" data-paging="true"  data-filtering="false" data-editing="true"></table>
+        </div>
+    </div>
+   
+</div>
+
+<script>
+     $(document).ready(function(){
+        $('#sidebarCollapse').on('click', function () {
+                        $('#sidebar').toggleClass('active');
+                    });
+                    $.ajax({
+            async: false,
+            type: "GET",
+            url: "http://202.153.46.138:82/api/Job/getScreening",
+            contentType: "application/json; charset=utf-8",
+            crossDomain: true,
+            dataType: "json",
+            success: function(data, status, jqXHR){
+                
+                sup = data;
+                var l =[];
+                for(var i=0;i<sup.length;i++)
+                {
+                    var lol = sup[i].Interview_Dt;
+                        lol = lol.substring(0,10);
+                        sup[i]['Date'] = lol;
+                    if(sup[i].Final_Status_Id == 1)
+                    {
+
+                        l.push(sup[i]);
+                    }
+                }
+                console.log(l);
+                var 
+            ft = FooTable.init('#rejected-table', {
+                "columns": [
+                {"name":"Id","title":"S.No.","visible":false,"style":{"width":0,"maxWidth":0,"text-align":"center"}},
+                {"name":"Candidate_Name", "title":"Name","style":{"width":160,"maxWidth":190,"text-align":"center"}},
+                {"name":"Phone","title":"Phone Number","type":"number","style":{"width":60,"maxWidth":90,"text-align":"center"}},
+                {"name":"Email_Id","title":"Email","style":{"width":190,"maxWidth":190,"text-align":"center"}},
+                {"name":"Interview_Dt","title":"Interview Date","style":{"width":80,"maxWidth":100,"text-align":"center"},"visible":false},
+                {"name": "Date","title":"Interview Date","style":{"width":80,"maxWidth":100,"text-align":"center"} },
+                {"name":"Round1","title":"Round1","breakpoints":"xs"},
+                {"name":"Round1Type","title":"Round1-Type","visible":false},
+                {"name":"Round1_Comments","title":"Round1 Comments","breakpoints": "xs sm","style":{"text-align":"center"}},
+                {"name":"Round2","title":"Round2","breakpoints": "xs sm","style":{"text-align":"center"}},
+                {"name":"Round2Type","title":"Round2-Type","visible":false,"style":{"text-align":"center"}},
+                {"name":"Round2_Comments","title":"Round2 Comments","breakpoints": "xs sm","style":{"text-align":"center"}},
+                {"name":"Round3","title":"Round3","breakpoints": "xs sm md","style":{"text-align":"center"}},
+                {"name":"Round3Type","title":"Round3-Type","visible":false,"style":{"text-align":"center"}},
+                {"name":"Round3_Comments","title":"Round3 Comments","breakpoints": "xs sm md","style":{"text-align":"center"}},
+                {"name":"Final_Status_Id","visible":false},
+                {"name":"Status_Reason","visible":false},
+                {"name":"Interview_Time","visible":false}
+            ],
+            "rows": l,
+			editing: {
+            }
+            
+        });
+            },
+            
+            error: function (jqXHR, status) {
+                                // error handler
+                console.log(jqXHR);
+                alert('fail ' + status.code);
+            }
+
+        });
+
+    });
+</script>

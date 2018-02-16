@@ -1,0 +1,148 @@
+
+            
+            <div class="wrapper" ng-cloak>
+                    <!-- Sidebar Holder -->
+                    <nav id="sidebar">
+                        <div class="sidebar-header">
+                            <img class="first-image img-responsive" src="assets/img/logo.png" width="150" height="auto">
+                            <img class="second-image img-responsive animated lightSpeedIn" src="assets/img/logo_small.png" width="50" height="auto">
+                        </div>
+        
+                        <ul class="list-unstyled components">
+                            <li ng-class="{ active: isActive('/recruitmentmanagement')}">
+                                <a href="#!recruitmentmanagement">
+                                   <img class="pull-right img-ico manage-icon" src="assets/img/00.png">
+                                   <p class="li-name hidden-xs  ">Recruitment Management</p>
+                                   <!-- <p class="li-name hidden-xs  " style="margin-top:-10px">Management</p> -->
+                                   <img class="li-image img-responsive manage-icon-second animated lightSpeedIn" src="assets/img/00.png">
+                                </a>
+                                <!-- <ul class="collapse list-unstyled" id="homeSubmenu">
+                                    <li><a href="#">Home 1</a></li>
+                                    <li><a href="#">Home 2</a></li>
+                                    <li><a href="#">Home 3</a></li>
+                                </ul> -->
+                            </li>
+                            <!-- <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Dropdown link
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                  <a class="dropdown-item" href="#">Action</a>
+                                  <a class="dropdown-item" href="#">Another action</a>
+                                  <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                              </li> -->
+
+                            <li ng-class="{ active: isActive('/candidatelist')}">
+                                <a href="#!candidatelist">
+                                    <img class="pull-right img-ico pool-icon  " src="assets/img/01.png">
+                                    <p class="li-name hidden-xs  ">Pool</p>
+                                    <img class="li-image img-responsive pool-icon-second animated lightSpeedIn" src="assets/img/01.png">
+                                </a>
+                            </li>
+                            <li ng-class="{ active: isActive('/jobs')}">    
+                                <a href="#!jobs">
+                                    <img class="pull-right img-ico jobs-icon  " src="assets/img/02.png">
+                                    <p class="li-name hidden-xs  ">Jobs</p>
+                                    <img class="li-image img-responsive jobs-icon-second animated lightSpeedIn" src="assets/img/02.png">
+                                </a>
+                                <!-- <ul class="collapse list-unstyled" id="pageSubmenu">
+                                    <li><a href="#">Page 1</a></li>
+                                    <li><a href="#">Page 2</a></li>
+                                    <li><a href="#">Page 3</a></li>
+                                </ul> -->
+                            </li>
+                            <li ng-class="{active: isActive('/shortlist')}">
+                                <a href="#!shortlist">
+                                    <img class="pull-right img-ico shortlist-icon  " src="assets/img/03.png">
+                                    <p class="li-name hidden-xs  ">Shortlist</p>
+                                    <img class="li-image shortlist-icon-second animated lightSpeedIn" src="assets/img/03.png">
+                                </a>
+                            </li>
+                            <li ng-class="{active: isActive('/screening')}">
+                                <a href="#!scheduling">
+                                    <img class="pull-right img-ico screening-icon  " src="assets/img/04.png">
+                                    <p class="li-name hidden-xs  ">Screening</p>
+                                    <img class="li-image img-responsive screening-icon-second animated lightSpeedIn" src="assets/img/04.png">
+                                </a>
+                            </li>
+                            <li ng-class="{active: isActive('/rejected')}">
+                                <a href="#!rejected">
+                                    <img class="pull-right img-ico rejected-icon  " src="assets/img/05.png">
+                                    <p class="li-name hidden-xs  ">Rejected</p>
+                                    <img class="li-image img-responsive rejected-icon-second animated lightSpeedIn" src="assets/img/05.png">
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown" id="myDropdown" >
+                                <a class="dropdown-toggle li-name " data-toggle="dropdown" ng-class="{active: isActive('/selected')}" href="#!selected">Selected</a>
+                                <i class="fa fa-user-plus pull-right img-ico selected-icon"></i>
+                                <i class="fa fa-user-plus li-image selected-icon-second animated lightSpeedIn"></i>
+                                <ul class="dropdown-menu">
+            
+                                  <li><a  ng-class="{active: isActive('/started')}" href="#!started">Started/Joined</a></li>
+                                  <li><a  href="#!denied" ng-class="{active: isActive('/denied')}">Offer Denied</a></li>
+                                  <li><a  ng-class="{active: isActive('/onhold')}" href="#!onhold">On Hold</a></li>
+                                </ul>
+                              </li>
+                            <!-- <li ng-class="{active: isActive('/offered')}">
+                                <a href="#!offered">
+                                    <img class="pull-right img-ico offered-icon  " src="assets/img/06.png">
+                                    <p class="li-name hidden-xs  ">Offered</p>
+                                    <img class="li-image img-responsive offered-icon-second animated lightSpeedIn" src="assets/img/06.png">
+                                </a>
+                            </li>
+                            <li ng-class="{active: isActive('/denied')}">
+                                <a href="#!denied">
+                                    <img class="pull-right img-ico denied-icon  " src="assets/img/07.png">
+                                    <p class="li-name hidden-xs  ">Denied</p>
+                                    <img class="li-image img-responsive denied-icon-second animated lightSpeedIn" src="assets/img/07.png">
+                                </a>
+                            </li>
+                            <li ng-class="{active: isActive('/started')}">
+                                <a href="#!started">
+                                    <img class="pull-right img-ico started-icon  " src="assets/img/08.png">
+                                    <p class="li-name hidden-xs  ">Started</p>
+                                    <img class="li-image img-responsive started-icon-second animated lightSpeedIn" src="assets/img/08.png">
+                                </a>
+                            </li> -->
+                            
+                            <li class="text-center" style="margin-top:20px;">
+                                
+                                <button type="button" class="btn btn-md logout-button" ng-click="logout()"><i class="fa fa-sign-out"></i>Logout</button>
+                                <i class="fa fa-sign-out logout-button-xs animated lightSpeedIn" ng-click="logout()"></i>
+                                
+                            </li>
+                            <!-- <div class="ht"></div> -->
+                            <!-- <li>
+                                <a href="#">
+                                    <i class="fa fa-sign-out img-ico pull-right"></i>
+                                    <p class="li-name hidden-xs" ng-click="logout()">Logout</p>
+                                    <i class="fa fa-sign-out animated lightSpeedIn li-image"  ng-click="logout()"></i>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </nav>
+                       
+                    <!-- <div id="content">
+                             
+                    </div>             -->
+                    </div>
+                    </div>
+                    <script>
+                       $('#myDropdown .dropdown-menu').on({
+                        "click":function(e){
+                        e.stopPropagation();
+                        }
+                    });
+                    function setHeight() {
+                        windowHeight = $(window).innerHeight();
+                        $('#sidebar').css('height', windowHeight*2);
+                      };
+                      setHeight();
+                      
+                      $(window).resize(function() {
+                        setHeight();
+                      });
+</script>
+
+                   

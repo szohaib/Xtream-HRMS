@@ -1,0 +1,7 @@
+[
+    {"name":"jobTitle","title":"Job Title","breakpoints":"","type":"string","style":{"width":160,"maxWidth":190,"text-align":"center"}},
+    {"name":"createdOn","title":"Created On" ,"type":"date","formatString":"DD/MM/YYYY","style":{"width":250,"maxWidth":250,"text-align":"center"}},
+    {"name":"createdBy","title":"Created By","type":"string","breakpoints":"xs","style":{"width":150,"maxWidth":150,"text-align":"center"}},
+    {"name":"status","title":"Status","type":"string","breakpoints":"xs","style":{"width":100,"maxWidth":100,"text-align":"center"}},
+    {"name":"openings","title":"Openings","type":"number","breakpoints":"xs","style":{"width":80,"maxWidth":80,"text-align":"center"}}
+  ]

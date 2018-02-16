@@ -1,0 +1,374 @@
+
+<div class="wrapper">
+    
+    <div id="content">
+        <nav class="navbar navbar-default top-navbar">
+            <div class="">
+                <div class="navbar-header">
+                    <button type="button" id="sidebarCollapse" class="btn btn-inf navbar-btn">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <div class="row pull-right details">  
+                        <p class="upper col-md-9 hidden-sm hidden-xs top-md-header">{{current}}</p><i class="fa fa-user-circle-o col-md-3 hidden-sm hidden-xs top-md-icon"></i>
+                        <p class="upper col-md-9 visible-xs top-xs-header">{{current}}</p><i class="fa fa-user-circle-o top-xs-icon col-md-3 visible-xs"></i>
+                      </div>  
+                   
+                    <!-- <ul class="text-center">
+                        <li class="list-unstyled">
+                            <div class="row">
+                                <p class="top-header  visible-xs">{{current}}</p><i class="fa fa-user-circle-o  visible-xs"></i>
+                            </div>    
+                        </li>
+                    </ul> -->
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid custom-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary new-jobs-button" data-toggle="modal" data-target="#jobsModal"><i class="fa fa-plus"></i>New Jobs</button>
+                </div>
+            </div>
+            
+            <table  style="margin-top:20px" id="jobs-table" class="table table-bordered table-stripe custom-footable" data-paging="true"  data-filtering="false" data-editing="true" data-editing-column='{"title":"Actions", "style":{"text-align":"center"}}'>
+                <!-- <thead>
+                    <tr>
+                    <th>S.No</th><th>Jobs Title</th><th>Project</th><th>Created Date</th><th>Created By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="jobs in jobData">
+                    <td>{{ jobs.Id }}</td><td>{{ jobs.Name }}</td><td>{{ jobs.Project_Vacancy }}</td><td>{{ jobs.Created_DT }}</td><td>{{ jobs.Created }}</td>    
+                    </tr>
+                </tbody> -->
+            </table>
+        </div>
+        
+    </div>
+</div>
+
+
+                                
+           <!-- Skills Modal -->
+
+           <div class="modal fade custom-modal" id="jobsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" >
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="exampleModalLabel">Add New Job</h3>
+
+                        </div>
+                        <div class="modal-body">
+                        <form name="jobs" novalidate>
+                            <div class="row">
+                                <div class="form-group col-md-6 col-xs-12">
+                                    <label>
+                                            Job Title<span class="asterisk">*</span>
+                                    </label>
+                                    <select class="form-control" ng-model="job_title" required>
+                                        <option ng-repeat="pull in pullSkills" value="{{pull}}">{{pull}}</option>
+                                    </select>    
+                                </div>
+                                <div class="form-group col-md-6 col-xs-12">
+                                        <label class="form-check-label">
+                                                Project<span class="asterisk">*</span>
+                                        </label>
+                                        <input class="form-control" type="text" ng-model="project" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                    <div class="form-group col-md-6 col-xs-12">
+                                        <label>
+                                                Created Date<span class="asterisk">*</span>
+                                        </label>
+                                        <input class="form-control" type="date" ng-model="created_date" readonly required>
+                                    </div>
+                                    <div class="form-group col-md-6 col-xs-12">
+                                            <label class="">
+                                                    Created By<span class="asterisk">*</span>
+                                            </label>
+                                            <input class="form-control" type="text" ng-model="created_by" readonly required>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="form-group col-md-12 col-xs-12">
+                                        <label class="upper">
+                                                Salary Range(in Rs)<span class="asterisk">*</span>
+                                        </label>
+                                        </div>
+                                        <div class="form-group col-md-5">    
+                                            
+                                            <input type="number" class="form-control" ng-model="minValue" required />
+                                            <span>{{minValue | currency:"₹":0}}</span>
+                                        </div>
+                                        <div class="col-md-1 to-class">
+                                            <p class="upper">To</p>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            
+                                            <input type="number" class="form-control col-md-6" name="maxValue" ng-model="maxValue"  ng-change="rangeValid();" required />
+                                            <span>{{maxValue | currency:"₹":0}}</span>
+                                            <span style="color:red;">{{ errorMessage }}</span>
+                                        </div>    
+                                    </div>
+                            
+                            <div class="row">
+                                    <div class="form-group col-md-6 col-xs-12">
+                                        <label class="">
+                                                Experience<span class="asterisk">*</span>
+                                        </label>
+                                        <input class="form-control" type="text" ng-model="experience" required>
+                                    </div>
+                                    <div class="form-group col-md-6 col-xs-12">
+                                            <label class="">
+                                                    Comment
+                                            </label>
+                                            <input class="form-control" type="text" ng-model="comment">
+                                    </div>
+                            </div>
+                        </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" ng-click="jobSubmit();" data-dismiss="modal" ng-disabled="jobs.$invalid">Save</button> 
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                                     <!-- Editing Modal Markup -->
+                                
+                                     <div class="modal fade custom-modal" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
+                                        
+                                        <div class="modal-dialog " role="document">
+                                            <form class="modal-content" id="editor">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                    <h6 class="white">Edit Row:
+                                                    <input type="text" readonly class="id-input" id="editor-title123" ng-model="edit_Id"/></h6>
+                                                </div>
+                                                <div class="modal-body" id="modalVals">
+                                                        <div class="row">
+                                                                <div class="form-group col-md-6 col-xs-12">
+                                                                    <label>
+                                                                            Job Title<span class="asterisk">*</span>
+                                                                    </label>
+                                                                    <input class="form-control" type="text" id="job_title2" ng-model="job_title2" required>
+                                                                </div>
+                                                                <div class="form-group col-md-6 col-xs-12">
+                                                                        <label class="form-check-label">
+                                                                                Project<span class="asterisk">*</span>
+                                                                        </label>
+                                                                        <input class="form-control" type="text" id="project2" ng-model="project2" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                    <div class="form-group col-md-6 col-xs-12">
+                                                                        <label>
+                                                                                Created Date<span class="asterisk">*</span>
+                                                                        </label>
+                                                                        <input class="form-control" type="text" id="created_date2" ng-model="created_date2" required>
+                                                                    </div>
+                                                                    <div class="form-group col-md-6 col-xs-12">
+                                                                            <label class="">
+                                                                                    Created By<span class="asterisk">*</span>
+                                                                            </label>
+                                                                            <input class="form-control" type="text" id="created_by2" ng-model="created_by2" required>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                    <div class="form-group col-md-12 col-xs-12">
+                                                                        <label class="upper">
+                                                                                Salary Range(in Rs)<span class="asterisk">*</span>
+                                                                        </label>
+                                                                        </div>
+                                                                        <div class="form-group col-md-5">    
+                                                                            
+                                                                            <input type="number" class="form-control" id="minValue2" ng-model="minValue2" required />
+                                                                        </div>
+                                                                        <div class="col-md-1 to-class">
+                                                                            <p class="upper">To</p>
+                                                                        </div>
+                                                                        <div class="form-group col-md-6">
+                                                                            
+                                                                            <input type="number" class="form-control col-md-6" id="maxValue2" ng-model="maxValue2" required />
+                                                                        </div>    
+                                                                    </div>
+                                                            
+                                                            <div class="row">
+                                                                    <div class="form-group col-md-6 col-xs-12">
+                                                                        <label class="">
+                                                                                Experience<span class="asterisk">*</span>
+                                                                        </label>
+                                                                        <input class="form-control" type="text" id="experience2" ng-model="experience2" required>
+                                                                    </div>
+                                                                    <div class="form-group col-md-6 col-xs-12">
+                                                                            <label class="">
+                                                                                    Comment
+                                                                            </label>
+                                                                            <input class="form-control" type="text" id="comment2" ng-model="comment2">
+                                                                    </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group col-md-6 col-xs-12">
+                                                                    <label>Update Status:</label>
+                                                                    <br>
+                                                                    <div class="btn-group" id="status" data-toggle="buttons">
+                                                                        <label class="btn btn-default btn-on btn-xs active-status-button" id="active-tab" ng-click="callActive();">
+                                                                            <input type="radio" value="1" name="multifeatured_module[module_id][status]" id="active" ng-model="activeToggle">
+                                                                            Active
+                                                                        </label>
+                                                                        <label class="btn btn-default btn-off btn-xs inactive-status-button" id="inactive-tab" ng-click="callActive();">
+                                                                            <input type="radio" value="0" name="multifeatured_module[module_id][status]" ng-model="inactiveToggle"  id="inactive">
+                                                                            Inactive
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                </div>
+                                                    <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary" ng-click="submitUpdate();">Save changes</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                </div>
+                                                   
+                                                
+                                            </form>
+                                        </div>
+                                    </div>                                       
+
+<script>
+    
+                   
+            
+    $(document).ready(function(){
+        $('#sidebarCollapse').on('click', function () {
+                        $('#sidebar').toggleClass('active');
+                    });
+                    var sup =[];
+                    var txt;
+                    $.ajax({
+                            async: false,
+                            type: "GET",
+                            url: "http://202.153.46.138:82/api/Job/getJobs",
+                            //data: JSON.stringify(data),// now data come in this function
+                            contentType: "application/json; charset=utf-8",
+                            crossDomain: true,
+                            dataType: "json",
+                            success: function (data, status, jqXHR) {
+
+                                sup = data;
+                                //console.log(sup);
+                                //sup = JSON.stringify(data);
+                                for(var i=0;i<sup.length;i++)
+                                {
+                                    //console.log(sup[i]['isVacancyClosed']);
+                                    if(sup[i]['isVacancyClosed'] == false)
+                                    {
+                                        sup[i]['Toggle']="<div class=\"btn-group\" id=\"status\" data-toggle=\"buttons\"><label class=\"btn btn-default btn-on btn-xs active-status-button active\" ><input type=\"radio\" value=\"1\" name=\"multifeatured_module[module_id][status]\" id=\"active\" checked=\"checked\" disabled =\"disabled\">Active</label></div>";
+                                    }
+                                    else if(sup[i]['isVacancyClosed'] == true)
+                                    {
+                                        sup[i]['Toggle']="<div class=\"btn-group\" id=\"status\" data-toggle=\"buttons\"><label class=\"btn btn-default btn-off btn-xs inactive-status-button active \"><input type=\"radio\" value=\"0\" name=\"multifeatured_module[module_id][status]\" id=\"inactive\" checked=\"checked\" disabled=\"disabled\">Inactive</label></div>";
+                                    }
+                                    var lol = sup[i].Created_DT;
+                                    lol=lol.substring(0,10);
+                                    sup[i]['Date'] = lol;
+                                    sup[i]['S.No.'] = i+1;
+
+                                }                                
+                            },
+
+                            error: function (jqXHR, status) {
+                                // error handler
+                                console.log(jqXHR);
+                                alert('fail ' + status.code);
+                            }
+                        });
+
+                        //console.log(sup);           
+        var $modal = $('#editor-modal'),
+		$editor = $('#editor'),
+        $editorTitle123 = $('#editor-title123'),
+        ft = FooTable.init('#jobs-table', {
+            "columns": [
+                {"name":"Id","title":"Id","id":"ID","ng-model":"ID","breakpoints":"","type":"number","style":{"width":60,"maxWidth":90,"text-align":"center"},"visible":false},
+                {"name":"S.No.","title":"S.No","style":{"width":60,"maxWidth":90,"text-align":"center"}},
+                {"name":"Name","title":"Jobs Title" ,"style":{"width":250,"maxWidth":250,"text-align":"center"}},
+                {"name":"Project_Vacancy","title":"Project","breakpoints":"xs","style":{"width":250,"maxWidth":250,"text-align":"center"}},
+                {"name":"Date","title":"Date","breakpoints":"xs","style":{"width":250,"maxWidth":250,"text-align":"center"}},
+                {"name":"Created_DT","title":"Created Date","breakpoints":"xs","style":{"width":250,"maxWidth":250,"text-align":"center"},"visible":false},
+                {"name":"Created","title":"Created By","breakpoints":"xs","style":{"width":230,"maxWidth":230,"text-align":"center"}},
+                {"name":"StartRange", "title":"minValue","visible":false},
+                {"name":"EndRange","title":"maxValue","visible":false},
+                {"name":"Experience","title":"Experience","visible":false},
+                {"name":"Vacancy_Comments","title":"Comments","visible":false},
+                {"name":"isVacancyClosed","title":"Inactivity","visible":false},
+                {"name":"Toggle","title":"Status"}
+                
+            ],
+            "rows": sup,
+            editing:{
+                alwaysShow:true,
+                editRow: function(row){
+                    var values = row.val();
+                    console.log(row);
+					$editor.find('#editor-title123').val(values.Id);
+					$editor.find('#job_title2').val(values.Name);
+					$editor.find('#project2').val(values.Project_Vacancy);
+					$editor.find('#minValue2').val(values.StartRange);
+					$editor.find('#created_date2').val(values.Date);
+					$editor.find('#created_by2').val(values.Created);
+					$editor.find('#experience2').val(values.Experience);
+                    $editor.find('#comment2').val(values.Vacancy_Comments);
+                    $editor.find('#maxValue2').val(values.EndRange);
+                    if(values.isVacancyClosed == "true")
+                    {
+                        console.log("Inactive");
+                        $("#inactive-tab" ).removeClass( "btn btn-default btn-off btn-xs inactive-status-button" ).addClass( "btn btn-default btn-off btn-xs inactive-status-button active" );
+                        $("#active-tab" ).removeClass( "btn btn-default btn-on btn-xs active-status-button active" ).addClass( "btn btn-default btn-on btn-xs active-status-button" );
+                    }
+                    else if(values.isVacancyClosed == "false")
+                    {
+                        console.log("Active");
+                        $("#active-tab" ).removeClass( "btn btn-default btn-on btn-xs active-status-button" ).addClass( "btn btn-default btn-on btn-xs active-status-button active" );
+                        $("#inactive-tab" ).removeClass( "btn btn-default btn-off btn-xs inactive-status-button active" ).addClass( "btn btn-default btn-off btn-xs inactive-status-button" );
+                    }
+					$modal.data('row', row);
+					$editorTitle123.text(values.Id);
+					$modal.modal('show');
+				},
+                deleteRow: function(row){
+					if (confirm('Are you sure you want to delete the row?')){
+                        row.delete();
+                        
+                        var r = row.value.Id;
+                        //console.log(r);
+                        $.ajax({
+                            type: "GET",
+                            url: "http://202.153.46.138:82/api/Job/removeJob/"+r,
+                            //data: JSON.stringify(data),// now data come in this function
+                            contentType: "application/json; charset=utf-8",
+                            crossDomain: true,
+                            dataType: "json",
+                            success: function (data, status, jqXHR) {
+
+                                alert("Success");
+                            },
+
+                            error: function (jqXHR, status) {
+                                // error handler
+                                console.log(jqXHR);
+                                alert('fail ' + status.code);
+                            }
+                        });
+					}
+				}
+            }
+    });
+
+});
+
+</script>

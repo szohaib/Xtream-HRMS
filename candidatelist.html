@@ -1,0 +1,289 @@
+
+
+
+        
+    <!--<body ng-cloak ng-app="mainApp" ng-controller="mainController" ng-init="list=[{sno:'1',name:'zee',level:'T3',Experience:'2 Years',CTC:'',Expectation:'',StartNotice:'40 Days',Interviews:'F2F Interviews',Date:'23-07-17'},{sno:'2',name:'imad',level:'T3',Experience:'2 Years',CTC:'',Expectation:'',StartNotice:'40 Days',Interviews:'F2F Interviews',Date:'23-07-17'}]"> -->
+
+        
+            <!-- Sidebar Holder -->
+            <div class="wrapper" ng-cloak>
+              
+
+            <div id="content">
+                <nav class="navbar navbar-default top-navbar">
+                    <div class="">
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-inf navbar-btn">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                              <div class="row pull-right details">  
+                                <p class="upper col-md-9 hidden-sm hidden-xs top-md-header">{{current}}</p><i class="fa fa-user-circle-o col-md-3 hidden-sm hidden-xs top-md-icon"></i>
+                                <p class="upper col-md-9 visible-xs top-xs-header">{{current}}</p><i class="fa fa-user-circle-o top-xs-icon col-md-3 visible-xs"></i>
+                              </div>  
+                           
+                            <!-- <ul class="text-center">
+                                <li class="list-unstyled">
+                                    <div class="row">
+                                        <p class="top-header  visible-xs">{{current}}</p><i class="fa fa-user-circle-o  visible-xs"></i>
+                                    </div>    
+                                </li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </nav>
+                <!-- TABLE TO BE INSERTED HERE -->
+
+                
+                <div class="container-fluid custom-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="#!candidatelist/profile"><button type="button" class="btn btn-primary entry-btn "><i class="fa fa-address-card-o"></i>New Entry</button></a>
+                        </div>
+                    </div>
+                    <hr>
+                   
+                    <table  style="margin-top:20px" id="showcase-example-1" class="table table-bordered table-stripe custom-footable" data-paging="true" data-filtering="true" data-editing="true" data-editing-column='{"title":"Actions","style":{"text-align":"center"}}' >
+                        
+                    </table>
+
+                </div>
+               
+                        
+
+                        <!-- Editing Modal Markup -->
+                        <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
+                            <style scoped>
+                                /* provides a red astrix to denote  fields - this should be included in common stylesheet */
+                                .form-group.required .control-label:after {
+                                    content:"*";
+                                    color:red;
+                                    margin-left: 4px;
+                                }
+                            </style>
+                            <div class="modal-dialog " role="document">
+                                <form class="modal-content" id="editor">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <h4 class="modal-title" id="editor-title">Add a Row</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-start">
+                                        <input type="number" id="id" name="id" class="hidden"/>
+                                        
+                                       
+                                        <div class="form-group col-md-12 ">
+                                            <label for="name" class=" control-label">Name</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" >
+                                        </div>
+                                        <div class="form-group col-md-12 ">
+                                            <label for="level" class="control-label">Level</label>
+                                           
+                                                <input type="text" class="form-control" id="level" name="level" placeholder="Level" >
+                                            
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="experience" class="control-label">Experience</label>
+                                                <input type="text" class="form-control" id="experience" name="experience" placeholder="Job Title">
+                                        </div>
+                                        <div class="form-group col-md-12 ">
+                                            <label for="ctc" class="control-label">CTC</label>
+                                            
+                                                <input type="text" class="form-control" id="ctc" name="ctc" placeholder="CTC" >
+                                            
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="expectation" class="control-label">Expectation</label>
+                                            
+                                                <input type="text" class="form-control" id="expectation" name="expectation" placeholder="Expectation">
+                                            
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="start" class="control-label">Start</label>
+                                            <input type="text" class="form-control" id="start" name="start" placeholder="Start"> 
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="interviews" class="control-label">Interviews</label>
+                                            <input type="text" class="form-control" id="interviews" name="interviews" placeholder="Interviews"> 
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="date" class="control-label">Date</label>
+                                            <input type="text"  class="form-control" id="date" name="date" placeholder="Date"> 
+                                        </div>
+                                    </div>
+                                    </div>
+                                        <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                       
+                                    
+                                </form>
+                            </div>
+                        </div>
+
+               </div>             
+
+            </div>
+
+        
+
+
+       
+         <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+             });
+             var sup =[];
+                    var txt;
+                    $.ajax({
+                            async: false,
+                            type: "GET",
+                            url: "http://202.153.46.138:82/api/Resume/details",
+                            //data: JSON.stringify(data),// now data come in this function
+                            contentType: "application/json; charset=utf-8",
+                            crossDomain: true,
+                            dataType: "json",
+                            success: function (data, status, jqXHR) {
+
+                                sup = data;
+                                console.log(sup);
+                                for(var i=0;i<sup.length;i++)
+                                {
+                                    sup[i]['S.No.'] = i+1;
+                                }
+                            },
+
+                            error: function (jqXHR, status) {
+                                // error handler
+                                console.log(jqXHR);
+                                alert('fail ' + status.code);
+                            }
+                        });
+
+             jQuery(function($){
+	var $modal = $('#editor-modal'),
+		$editor = $('#editor'),
+		$editorTitle = $('#editor-title'),
+		ft = FooTable.init('#showcase-example-1', {
+            "columns": [
+
+{"name":"Id","title":"Id","breakpoints":"","type":"number","style":{"width":60,"maxWidth":90,"text-align":"center"},"visible":false},
+{"name":"First_Name","title":"Name" ,"style":{"width":250,"maxWidth":250,"text-align":"center"}},
+{"name":"Skill_ids","title":"Skills","style":{"width":200,"maxWidth":200,"text-align":"center"}},
+{"name":"Exeperience","title":"Experience (In Years)","breakpoints":"xs","style":{"width":150,"maxWidth":150,"text-align":"center"}},
+{"name":"Email_Id","title":"Email","breakpoints":"xs","style":{"width":230,"maxWidth":230,"text-align":"center"}},
+{"name":"Expected_CTC","title":"Expected CTC","breakpoints":"xs sm","style":{"width":300,"max-width":300,"text-align":"center"}},
+{"name":"Phone_Number","title":"Phone No.","breakpoints":"xs sm md","style":{"width":180,"max-width":180,"text-align":"center"}},
+{"name":"interviews","title":"Interviews","breakpoints":"xs sm md","style":{"width":100,"maxWidth":100,"text-align":"center"}},
+{"name":"Age","title":"Age","breakpoints":"xs sm md","style":{"text-align":"center"}},
+{"name":"Resume_Code","visible":false},
+{"name":"Salutation_Id","visible":false},
+{"name":"Last_Name","visible":false},
+{"name":"Nationality","visible":false},
+{"name":"Identityfication_Type_Id","visible":false},
+{"name":"Identityfication_Number","visible":false},
+{"name":"DOB","visible":false},
+{"name":"Gender_Id","visible":false},
+{"name":"Current_CTC","visible":false},
+{"name":"isNegotiable","visible":false},
+{"name":"Resume_Source","visible":false},
+{"name":"Refered_By","visible":false},
+{"name":"Qualification","visible":false},
+{"name":"Resume_Path","visible":false},
+{"name":"IsOnHold","visible":false},
+{"name":"isSelected","visible":false},
+{"name":"Modified_Dt","visible":false},
+{"name":"Notice_Period","visible":false}
+],
+			"rows": sup,
+			editing: {
+                alwaysShow:true,
+				addRow: function(){
+					$modal.removeData('row');
+					$editor[0].reset();
+					$editorTitle.text('Add a new row');
+					$modal.modal('show');
+				},
+				editRow: function(row){
+					var values = row.val();
+					$editor.find('#id').val(values.Id);
+					$editor.find('#name').val(values.First_Name);
+					$editor.find('#level').val(values.Skill_ids);
+					$editor.find('#experience').val(values.Exeperience);
+					$editor.find('#ctc').val(values.Current_CTC);
+					$editor.find('#expectation').val(values.Resume_Code);
+					$editor.find('#start').val(values.Notice_Period);
+                    $editor.find('#interviews').val(values.interviews);
+                    $editor.find('#date').val(values.Modified_Dt
+                );
+					$modal.data('row', row);
+					$editorTitle.text('Edit row #' + values.id);
+					$modal.modal('show');
+				},
+				deleteRow: function(row){
+					if (confirm('Are you sure you want to delete the row?')){
+                        row.delete();
+                        
+                        var r = row.value.Id;
+                        console.log(r);
+                        $.ajax({
+                            async:false,
+                            type: "GET",
+                            url: "http://202.153.46.138:82/api/Resume/RemoveApplicant/"+r,
+                            //data: JSON.stringify(data),// now data come in this function
+                            contentType: "application/json; charset=utf-8",
+                            crossDomain: true,
+                            dataType: "json",
+                            success: function (data, status, jqXHR) {
+
+                                alert("Success!");
+                                location.reload();
+                            },
+
+                            error: function (jqXHR, status) {
+                                // error handler
+                                console.log(jqXHR);
+                                alert('fail ' + status.code);
+                            }
+                        });
+					}
+				}
+			}
+		}),
+		uid = 10001;
+
+	$editor.on('submit', function(e){
+		if (this.checkValidity && !this.checkValidity()) return;
+		e.preventDefault();
+		var row = $modal.data('row'),
+			values = {
+				id: $editor.find('#id').val(),
+				name: $editor.find('#name').val(),
+				level: $editor.find('#level').val(),
+				experience: $editor.find('#experience').val(),
+				ctc: $editor.find('#ctc').val(),
+				expectation: $editor.find('#expectation').val(),
+                start: $editor.find('#start').val(),
+                interviews: $editor.find('#interviews').val(),
+                date: moment($editor.find('#date').val(),'YYYY-MM-DD'),
+			};
+
+		if (row instanceof FooTable.Row){
+			row.val(values);
+		} else {
+			values.id = uid++;
+			ft.rows.add(values);
+		}
+		$modal.modal('hide');
+    });
+
+});
+
+
+
+            
+</script>

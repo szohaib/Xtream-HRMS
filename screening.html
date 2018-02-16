@@ -1,0 +1,437 @@
+<div class="wrapper">
+    
+
+
+<div id="content">
+    <nav class="navbar navbar-default top-navbar">
+        <div class="">
+            <div class="navbar-header">
+                <button type="button" id="sidebarCollapse" class="btn btn-inf navbar-btn">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <div class="row pull-right details">  
+                    <p class="upper col-md-9 hidden-sm hidden-xs top-md-header">{{current}}</p><i class="fa fa-user-circle-o col-md-3 hidden-sm hidden-xs top-md-icon"></i>
+                    <p class="upper col-md-9 visible-xs top-xs-header">{{current}}</p><i class="fa fa-user-circle-o top-xs-icon col-md-3 visible-xs"></i>
+                  </div>  
+               
+                <!-- <ul class="text-center">
+                    <li class="list-unstyled">
+                        <div class="row">
+                            <p class="top-header  visible-xs">{{current}}</p><i class="fa fa-user-circle-o  visible-xs"></i>
+                        </div>    
+                    </li>
+                </ul> -->
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container-fluid custom-container">
+        
+            <ul class="nav nav-tabs pull-right">
+                    <li class="screening-tab active"><a data-toggle="tab" href="#!scheduling">Scheduling</a></li>
+                    <li class="scheduling-tab"><a data-toggle="tab" href="#!screening">Screening</a></li>
+                </ul>
+            
+                  
+                 
+                        <div class="row">
+                            <div class="form-group col-md-3 pull-left">
+                                <select id="shortlistData" class="shortlist form-control">
+                                    
+                                </select>
+                            </div>    
+                    </div>
+                        <table  id="screening-table" class="table table-bordered table-stripe screening-table custom-footable" data-paging="true" data-filtering="true" data-editing="true" data-editing-column='{"title":"Actions","style":{"text-align":"center"}}' ></table>
+                    
+
+                    
+                  </div>
+                
+        
+    </div>  
+   
+</div> 
+</div>       
+
+<div class="modal fade custom-modal" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
+        <style scoped>
+            /* provides a red astrix to denote  fields - this should be included in common stylesheet */
+            .form-group.required .control-label:after {
+                content:"*";
+                color:red;
+                margin-left: 4px;
+            }
+        </style>
+        <div class="modal-dialog " role="document">
+            <form class="modal-content" name="screenpost" id="editor">
+                <div class="modal-header">
+                    <button type="button" class="close white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h6 class="white modal-title">Interview Schedule</h6>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                    <div class="form-group col-md-6">
+                    <label>Candidate Name:<span class="asterisk">*</span></label><input type="text" class="form-control" id="name" ng-model="name" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                    <label>Phone Number:<span class="asterisk">*</span></label><input type="text" class="form-control" id="phone123" ng-model="phone123" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                    <label>Email Id:<span class="asterisk">*</span></label><input type="text" class="form-control" id="email" ng-model="email" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                    <label>Interview Date:<span class="asterisk">*</span></label><input type="date" class="form-control" id="date" ng-model="date123" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                    <label>Interview Time:<span class="asterisk">*</span></label><input type="time" class="form-control" id="time" ng-model="time" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                    <label>Round 1:</label><input type="text" class="form-control" id="r1" ng-model="r1">
+                    </div>
+                    <div class="form-group col-md-3">
+                    <label>Type:</label><input type="text" class="form-control" id="r1t" ng-model="r1t">
+                    </div>
+                    <div class="form-group col-md-3">
+                    <label>Round 2:</label><input type="text" class="form-control" id="r2" ng-model="r2">
+                    </div>
+                    <div class="form-group col-md-3">
+                    <label>Type:</label><input type="text" class="form-control" id="r2t" ng-model="r2t">
+                    </div>
+                    <div class="form-group col-md-3">
+                    <label>Round 3:</label><input type="text" class="form-control" id="r3" ng-model="r3">
+                    </div>
+                    <div class="form-group col-md-3">
+                    <label>Type:</label><input type="text" class="form-control" id="r3t" ng-model="r3t">
+                    </div>
+                    </div>
+                </div>
+                
+                    <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary"  ng-click="submitScreen();">Save changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                   
+                
+            </form>
+            </div>
+        </div>
+    
+
+   
+    <script>
+    
+    $(document).ready(function(){
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+        
+
+
+        $.ajax({
+                            async: false,
+                            type: "GET",
+                            url: "http://202.153.46.138:82/api/Resume/details",
+                            //data: JSON.stringify(data),// now data come in this function
+                            contentType: "application/json; charset=utf-8",
+                            crossDomain: true,
+                            dataType: "json",
+                            success: function (data, status, jqXHR) {
+
+                                sup = data;
+                               
+                            },
+
+                            error: function (jqXHR, status) {
+                                // error handler
+                                console.log(jqXHR);
+                                alert('fail ' + status.code);
+                            }
+        });
+    
+    $("#shortlistData").on("change",function () {
+            //alert("Hello");
+                var d = document.getElementById('shortlistData').value;
+                //console.log(shortlistData);
+                var m =[];                
+                var l = [];
+                for(var i=0;i<shortlistData.length;i++)
+                {
+                    if(shortlistData[i].Skill_ids == d)
+                    {
+                        m.push(shortlistData[i].Id);
+                    }
+                }
+                
+                //console.log(m);
+                for(var i=0;i<sup.length;i++)
+                {
+                    if(m.indexOf(sup[i].Id)> -1)
+                    {
+                        
+                        l.push(sup[i]);
+
+                    }
+                }
+            var $modal = $('#editor-modal'),
+		    $editor = $('#editor'),
+		    $editorTitle = $('#editor-title'),
+		    ft = FooTable.init('#screening-table', {
+            "columns":[
+
+{"name":"Id","title":"Id","breakpoints":"","type":"number","style":{"width":60,"maxWidth":90,"text-align":"center"},"visible":false},
+{"name":"First_Name","title":"Name" ,"style":{"width":250,"maxWidth":250,"text-align":"center"}},
+{"name":"Skill_ids","title":"Skills","style":{"width":200,"maxWidth":200,"text-align":"center"}},
+{"name":"Exeperience","title":"Experience (In Years)","breakpoints":"xs","style":{"width":150,"maxWidth":150,"text-align":"center"}},
+{"name":"Email_Id","title":"Email","breakpoints":"xs","style":{"width":230,"maxWidth":230,"text-align":"center"}},
+{"name":"Expected_CTC","title":"Expected CTC","breakpoints":"xs sm","style":{"width":300,"max-width":300,"text-align":"center"}},
+{"name":"Phone_Number","title":"Phone No.","breakpoints":"xs sm md","style":{"width":180,"max-width":180,"text-align":"center"}},
+{"name":"interviews","title":"Interviews","breakpoints":"xs sm md","style":{"width":100,"maxWidth":100,"text-align":"center"}},
+{"name":"Age","title":"Age","breakpoints":"xs sm md","style":{"text-align":"center"}},
+{"name":"Resume_Code","visible":false},
+{"name":"Salutation_Id","visible":false},
+{"name":"Last_Name","visible":false},
+{"name":"Nationality","visible":false},
+{"name":"Identityfication_Type_Id","visible":false},
+{"name":"Identityfication_Number","visible":false},
+{"name":"DOB","visible":false},
+{"name":"Gender_Id","visible":false},
+{"name":"Current_CTC","visible":false},
+{"name":"isNegotiable","visible":false},
+{"name":"Resume_Source","visible":false},
+{"name":"Refered_By","visible":false},
+{"name":"Qualification","visible":false},
+{"name":"Resume_Path","visible":false},
+{"name":"IsOnHold","visible":false},
+{"name":"isSelected","visible":false},
+{"name":"Modified_Dt","visible":false},
+{"name":"Notice_Period","visible":false}
+],
+			"rows": l,
+			editing: {
+                alwaysShow:true,
+				addRow: function(){
+					$modal.removeData('row');
+					$editor[0].reset();
+					$editorTitle.text('Add a new row');
+					$modal.modal('show');
+				},
+				editRow: function(row){
+                    var values = row.val();
+                    //console.log(values.First_Name);
+                    $editor.find('#name').val(values.First_Name);
+                    $editor.find('#email').val(values.Email_Id);
+					$editor.find('#phone123').val(values.Phone_Number);
+                    $modal.data('row', row);
+                    $editorTitle.text('');
+					$modal.modal('show');
+				},
+				deleteRow: function(row){
+					if (confirm('Are you sure you want to delete the row?')){
+                        row.delete();
+                        
+                        var r = row.value.Id;
+                        console.log(d);
+                        var temp123 =     {
+                            "Id": r,
+                            "Skill_ids": d
+                        };
+                        console.log(temp123);
+                        $.ajax({
+                            type: "DELETE",
+                            url: 'http://202.153.46.138:82/api/Job/DeleteShortSkill/'+r+'?Skill_ids='+d,
+                            //data: JSON.stringify(data),// now data come in this function
+                            contentType: "application/json",
+                            crossDomain: true,
+                            dataType: "json",
+                            //data : temp123,
+                            success: function (data, status, jqXHR) {
+
+                                alert("Success");
+                                location.reload();
+                            },
+
+                            error: function (jqXHR, status) {
+                                // error handler
+                                console.log(jqXHR);
+                                alert('fail ' + status.code);
+                            }
+                        });
+					}
+				}
+			} 
+        });   
+        });   
+
+
+        var option = '';
+        $.ajax({
+            async: false,
+            type: "GET",
+            url: "http://202.153.46.138:82/api/Job/GetShort",
+            contentType: "application/json; charset=utf-8",
+            crossDomain: true,
+            dataType: "json",
+            success: function(data, status, jqXHR){
+                
+                shortlistData = data;
+                        
+                for (var i=1;i<shortlistData.length;i++){
+                    //console.log(shortlistData[i].Skill_ids);
+                    var sd;
+                    if(shortlistData[i].Skill_ids == 1002)
+                    {
+                        option += '<option value="'+shortlistData[i].Skill_ids +'">Programming</option>';
+                    }
+                    if(shortlistData[i].Skill_ids == 1005)
+                    {
+                        option += '<option value="'+shortlistData[i].Skill_ids +'">Application Developer</option>';
+                    }
+                    if(shortlistData[i].Skill_ids == 1006)
+                    {
+                        option += '<option value="'+shortlistData[i].Skill_ids +'">Project Manager</option>';
+                    }
+                    if(shortlistData[i].Skill_ids == 1008)
+                    {
+                        option += '<option value="'+shortlistData[i].Skill_ids +'">Database Administration</option>';
+                    }
+                    if(shortlistData[i].Skill_ids == 1004)
+                    {
+                        option += '<option value="'+shortlistData[i].Skill_ids +'">Business Analyst</option>';
+                    }
+                    if(shortlistData[i].Skill_ids == 1007)
+                    {
+                        option += '<option value="'+shortlistData[i].Skill_ids +'">Web Developer</option>';
+                    }
+                    if(shortlistData[i].Skill_ids == 1003)
+                    {
+                        option += '<option value="'+shortlistData[i].Skill_ids +'">C</option>';
+                    }
+                    console.log(option);
+                    if(i == (shortlistData.length -1))
+                    {
+                        arr =  $.unique(option.split('</option>'));
+                        option = arr.join("</option>");
+                        $('#shortlistData').append(option);
+                    }
+                }
+
+
+          
+            },
+            
+            error: function (jqXHR, status) {
+                                // error handler
+                console.log(jqXHR);
+                alert('fail ' + status.code);
+            }
+
+        });
+
+                  var d = document.getElementById('shortlistData').value;
+                //console.log(shortlistData);
+                var m =[];                
+                var l = [];
+                for(var i=0;i<shortlistData.length;i++)
+                {
+                    if(shortlistData[i].Skill_ids == d)
+                    {
+                        m.push(shortlistData[i].Id);
+                    }
+                }
+                //console.log(m);
+                for(var i=0;i<sup.length;i++)
+                {
+                    if(m.indexOf(sup[i].Id)> -1)
+                    {
+                        l.push(sup[i]);
+                    }
+                }
+            var $modal = $('#editor-modal'),
+		    $editor = $('#editor'),
+		    $editorTitle = $('#editor-title'),
+		    ft = FooTable.init('#screening-table', {
+            "columns":[
+
+  {"name":"Id","title":"Id","breakpoints":"","type":"number","style":{"width":60,"maxWidth":90,"text-align":"center"},"visible":false},
+  {"name":"First_Name","title":"Name" ,"style":{"width":250,"maxWidth":250,"text-align":"center"}},
+  {"name":"Skill_ids","title":"Skills","style":{"width":200,"maxWidth":200,"text-align":"center"}},
+  {"name":"Exeperience","title":"Experience (In Years)","breakpoints":"xs","style":{"width":150,"maxWidth":150,"text-align":"center"}},
+  {"name":"Email_Id","title":"Email","breakpoints":"xs","style":{"width":230,"maxWidth":230,"text-align":"center"}},
+  {"name":"Expected_CTC","title":"Expected CTC","breakpoints":"xs sm","style":{"width":300,"max-width":300,"text-align":"center"}},
+  {"name":"Phone_Number","title":"Phone No.","breakpoints":"xs sm md","style":{"width":180,"max-width":180,"text-align":"center"}},
+  {"name":"interviews","title":"Interviews","breakpoints":"xs sm md","style":{"width":100,"maxWidth":100,"text-align":"center"}},
+  {"name":"Age","title":"Age","breakpoints":"xs sm md","style":{"text-align":"center"}},
+  {"name":"Resume_Code","visible":false},
+  {"name":"Salutation_Id","visible":false},
+  {"name":"Last_Name","visible":false},
+  {"name":"Nationality","visible":false},
+  {"name":"Identityfication_Type_Id","visible":false},
+  {"name":"Identityfication_Number","visible":false},
+  {"name":"DOB","visible":false},
+  {"name":"Gender_Id","visible":false},
+  {"name":"Current_CTC","visible":false},
+  {"name":"isNegotiable","visible":false},
+  {"name":"Resume_Source","visible":false},
+  {"name":"Refered_By","visible":false},
+  {"name":"Qualification","visible":false},
+  {"name":"Resume_Path","visible":false},
+  {"name":"IsOnHold","visible":false},
+  {"name":"isSelected","visible":false},
+  {"name":"Modified_Dt","visible":false},
+  {"name":"Notice_Period","visible":false}
+],
+			"rows": l,
+			editing: {
+                alwaysShow:true,
+				addRow: function(){
+					$modal.removeData('row');
+					$editor[0].reset();
+					$editorTitle.text('Add a new row');
+					$modal.modal('show');
+				},
+				editRow: function(row){
+					var values = row.val();
+                    $editor.find('#name').val(values.First_Name);
+                    $editor.find('#email').val(values.Email_Id);
+					$editor.find('#phone123').val(values.Phone_Number);
+					$modal.data('row', row);
+					$editorTitle.text('Interview Schedule');
+					$modal.modal('show');
+				},
+				deleteRow: function(row){
+					if (confirm('Are you sure you want to delete the row?')){
+                        row.delete();
+                        
+                        var r = row.value.Id;
+                        console.log(r);
+                        $.ajax({
+                            type: "DELETE",
+                            url: 'http://202.153.46.138:82/api/Job/DeleteShortSkill'+r+'?Skill_ids='+d,
+                            //data: JSON.stringify(data),// now data come in this function
+                            contentType: "application/json",
+                            crossDomain: true,
+                            dataType: "json",
+                            //data : temp123,
+                            success: function (data, status, jqXHR) {
+
+                                alert("Success");
+                                location.reload();
+                            },
+
+                            error: function (jqXHR, status) {
+                                // error handler
+                                console.log(jqXHR);
+                                alert('fail ' + status.code);
+                            }
+                        });
+					}
+				}
+			} 
+        });              
+             
+        
+    });
+    </script>
+

@@ -1,0 +1,374 @@
+
+
+    
+        <div class="wrapper" ng-cloak>
+           
+        <div id="content">
+            <nav class="navbar navbar-default top-navbar">
+                <div class="">
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="btn btn-inf navbar-btn">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                          <div class="row pull-right details">  
+                            <p class="upper col-md-9 hidden-sm hidden-xs top-md-header">{{current}}</p><i class="fa fa-user-circle-o col-md-3 hidden-sm hidden-xs top-md-icon"></i>
+                            <p class="upper col-md-9 visible-xs top-xs-header">{{current}}</p><i class="fa fa-user-circle-o top-xs-icon col-md-3 visible-xs"></i>
+                          </div>  
+                       
+                        <!-- <ul class="text-center">
+                            <li class="list-unstyled">
+                                <div class="row">
+                                    <p class="top-header  visible-xs">{{current}}</p><i class="fa fa-user-circle-o  visible-xs"></i>
+                                </div>    
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+            </nav>
+            
+            <div class="custom-container container-fluid">
+               
+                <div class="row">
+                    <div class="col-md-12">
+                            <a href="#!candidatelist"><button type="button" class="btn btn-primary back-button"><i class="fa fa-arrow-circle-left"></i>BACK</button></a>
+                    </div>
+                </div>
+
+                <hr>
+                <form role="form" class="profile-form " name="addcandidate123"  novalidate>
+                    <div class="personal-info">
+                        <h5 class="upper">Personal Information</h5>
+                            <div class="panel panel-default">
+                                <div class="panel-body"> 
+                                
+                                    <div class="row">
+                                        <div class="form-group col-md-3 col-sm-6">
+                                          <label for="">Salutation</label>
+                                          <select ng-model="salutation" class="form-control">
+                                              <option value="1">Mr.</option>
+                                              <option value="2">Ms.</option>
+                                              <option value="3">Mrs.</option>
+                                          </select>
+                                        </div>
+                                        <div class="form-group col-md-3  col-sm-6">
+                                          <label for="">First Name<span class="asterisk">*</span></label>
+                                          <input type="text" class="form-control" ng-model="firstName" id="" required>
+                                        </div>
+                                        <div class="form-group col-md-3 col-sm-6">
+                                          <label for="">Last Name<span class="asterisk">*</span></label>
+                                          <input type="text" class="form-control" ng-model="lastName" id="" required>
+                                        </div>
+                                        <div class="form-group col-md-3 col-sm-6">
+                                          <label for="">Email ID<span class="asterisk">*</span></label>
+                                          <input type="text" name="email" ng-model="email" ng-pattern="emailPattern" class="form-control" id="email" required>
+    
+                                          <p style="color: red;" ng-cloak ng-show="addcandidate123.email.$error.pattern" class="help-block">Enter a valid email.</p>
+                                        </div>
+                                        <div class="form-group col-md-3 col-sm-6">
+                                            <label for="">Phone Number<span class="asterisk">*</span></label>
+                                            <input type="text" name="phone" ng-model="phone" ng-pattern="phoneNumbr" placeholder="6367865800" class="form-control" id="" required>
+                                            <!-- <p style="color: red;" class="error" ng-show="addcandidate123.phone.$error.required">Required!</p> -->
+                                            <p ng-cloak style="color: red;" class="error" ng-show="addcandidate123.phone.$error.minlength">Phone no not less that 10 char.</p>
+                                            <p ng-cloak style="color: red;" class="error" ng-show="addcandidate123.phone.$error.maxlength">Phone no not more than 11 char.</p>
+                                            <p ng-cloak class="error" style="color: red;" ng-show="addcandidate123.phone.$error.pattern">Please match pattern [0367865800 || 0367865800]</p>
+                                          </div>
+                                        <div class="form-group col-md-3 col-sm-6">
+                                          <label for="">Nationality</label>
+                                          <input type="text" ng-model="nationality" class="form-control" id="">
+                                        </div>
+                                        <div class="form-group col-md-3 col-sm-6">
+                                          <label for="">Identification Type<span class="asterisk">*</span></label>
+                                          <select class="form-control" ng-model="identity_type" ng-dropdown required>
+                                            <option value="1">Aadhar Card</option>
+                                            <option value="0">PAN Card</option>
+                                          </select>
+                                        </div>
+                                        <div class="form-group col-md-3 col-sm-6" id="Aadhar">
+                                          <label ng-cloak for="">Identification Number<span class="asterisk">*</span></label>
+                                          <input ng-cloak type="text" class="form-control" id="" ng-model="identity_number" required>
+                                        </div>
+                                        <div class="form-group col-md-3 col-sm-6">
+                                          <label for="">DOB<span class="asterisk">*</span></label>
+                                          <input type="date" class="form-control" ng-model="dob" id="" required>
+                                        </div>
+                                        <div class="form-group col-md-3 col-sm-6">
+                                          <label for="">Age</label>
+                                          <input type="number" class="form-control" min=0 oninput="validity.valid||(value='');" ng-model="age" id="">
+                                        </div>
+                                        <div class="form-group col-md-3 col-sm-6">
+                                          <label for="">Gender<span class="asterisk">*</span></label>
+                                          <select ng-model="gender" class="form-control">
+                                            <option value="1">Male</option>
+                                            <option value="0">Female</option>
+                                          </select>                                    </div>
+                                        <div class="form-group col-md-3 col-sm-6">
+                                          <label for="">Experience (In Years)<span class="asterisk">*</span></label>
+                                          <input type="number" min=0 oninput="validity.valid||(value='');" class="form-control" ng-model="experience" id="experience" required>  
+                                        </div>
+                                        <div class="form-group col-md-3 col-sm-6">
+                                          <label for="">Expected CTC (In Lakhs)</label>
+                                          <input type="text" class="form-control" id="" ng-model="ctc" required>
+                                        </div>
+                                        <div class="form-group col-md-3 col-sm-6">
+                                          <label for="">Negotiable<span class="asterisk">*</span></label>
+                                          <select class="form-control" ng-model="negotiable">
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
+                                          </select>
+                                        </div>
+                                        <div class="form-group col-md-3 col-sm-6">
+                                          <label for="">Resume Source<span class="asterisk">*</span></label>
+                                          <select class="form-control" ng-model="source" required>
+                                            <option value="1">Internal</option>
+                                            <option value="2">Job Portal</option>
+                                            <option value="3">Direct</option>
+                                          </select>
+                                        </div>
+                                        <div class="form-group col-md-3 col-sm-6" ng-if="source =='1'">
+                                          <label for="">Referee<span class="asterisk">*</span></label>
+                                          <input type="text" class="form-control" id="" ng-model="referee">
+                                        </div>
+                                        <div class="form-group col-md-3 col-sm-6" ng-if="source =='2'">
+                                            <label for="">Portal Name<span class="asterisk">*</span></label>
+                                            <select class="form-control" ng-model="referee">
+                                                <option value="Naukri.com">Naukri.com</option>
+                                                <option value="Monster.com">Monster.com</option>
+                                            </select>
+                                        </div>
+    
+                                        <div class="form-group col-md-3 col-sm-6">
+                                          <label for="">Applying<span class="asterisk">*</span></label>
+                                          <select class="form-control" ng-model="applying" required>
+                                            <option value="1">Full Time</option>
+                                            <option value="2">Part Time</option>
+                                            <option value="3">Trainee</option>
+                                            <option value="4">Internship</option>
+                                          </select>
+                                        </div>
+                                        <div class="form-group col-md-12 col-sm-12">
+                                            <input type="file" class="inputfile" id="browse" name="fileupload" ng-model="fileUpload" ngf-select="uploadFiles($file, $invalidFiles)" onchange="angular.element(this).scope().setFile(this);" ng-cloak/>
+                                            <label for="browse"><span class="glyphicon glyphicon-upload"></span> Upload Resume<span class="asterisk">*</span></label>
+                                            <span style="color:blue;">{{ filename }}</span>
+                                            <span class="uploadErrorMessage" ng-cloak>{{FileMessage}}</span>
+                                            <!-- <span id="filename" class="asterisk"></span> -->
+                                            <!-- <div style="font:smaller">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+                                                <span class="progress" ng-show="f.progress >= 0">
+                                                    <div style="width:{{f.progress}}%"  
+                                                         ng-bind="f.progress + '%'"></div>
+                                                </span> -->
+                                            <!-- </div>     
+                                            {{errorMsg}} -->
+                                        </div>
+                                        
+                                    </div>    
+     
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skills-container">
+                        <h5 class="upper">Qualification And Skills</h5>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+    
+                                    <div class="row">
+                                        <div class="form-group col-md-6 col-xs-12">
+                                            <label for="">Qualification<span class="asterisk">*</span></label>
+                                            <select class="form-control" ng-model="qualification" required>
+                                                <option value="2">B.E/B.Tech</option>
+                                                <option value="1">M.E/M.Tech</option>
+                                                <option value="3">PhD</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">    
+                                        <div class="form-group col-md-6 col-xs-12">
+                                            <label for="">Skills<span class="asterisk">*</span></label>
+                                            <tags-input ng-model="tags" readonly></tags-input>
+                                        </div>
+                                        <!--<p><a href="#" onclick="$('#skills123 li').eq(1).remove();return false;">Clear tags</a></p>-->
+    
+                                        <div class="col-md-6 col-xs-12">
+                                        <button type="button" class="btn btn-primary skills-button" data-toggle="modal" data-target="#skillsModal">
+                                            
+                                           <i class="fa fa-plus"></i>Add Skills
+                                        </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="prevemp-container" >
+                        <h5 class="upper">Previous Employment</h5>
+                        <div class="panel panel-default" >
+
+                            <div class="panel-body">
+    
+                                    <div class="form-group col-md-3 col-xs-12 col-sm-6">
+                                        <label for="">Company Name</label>
+                                        <input type="text" class="form-control"  id="" ng-model="prev_name">
+                                    </div>
+                                    <div class="form-group col-md-3 col-xs-12 col-sm-6">
+                                        <label for="">Job Type</label>
+                                        <input type="text" class="form-control" id="" ng-model="prev_type">
+                                    </div>
+                                    <div class="form-group col-md-3 col-xs-12 col-sm-6">
+                                        <label for="">Total Service In Company</label>
+                                        <input type="text" class="form-control" id="" ng-model="prev_service">
+                                    </div>
+                                    <div class="form-group col-md-3 col-xs-12 col-sm-6">
+                                        <label for="">Leaving Salary</label>
+                                        <input type="text" class="form-control" id="" ng-model="prev_sal">
+                                    </div>
+                                    <div class="form-group col-md-3 col-xs-12 col-sm-6">
+                                        <label for="">Company Address URL</label>
+                                        <input type="text" class="form-control" id="" ng-model="prev_add">
+                                        
+                                    </div>
+                                    <div class="form-group col-md-3 col-xs-12 col-sm-6">
+                                        <label for="">Designation</label>
+                                        <input type="text" class="form-control" id="" ng-model="prev_designation">
+                                    </div>
+                                    <div class="form-group col-md-3 col-xs-12 col-sm-6">
+                                        <button class="btn btn-primary add-company-button" ng-click="add_update()"><i class="fa fa-plus"></i>Add Company</button>
+                                    </div>    
+                            </div>
+                            
+                        </div>
+                        <table  style="margin-top:20px" id="company-table" class="table  table-bordered table-stripe company-table" data-paging="true"  data-filtering="false" data-editing="false">
+                            <thead>
+                                <tr>
+                                        <th>S.No.</th>
+                                        <th>Company Name</th>
+                                        <th>Job Type</th>
+                                        <th data-breakpoints="xs">Total Service In Company</th>
+                                        <th data-breakpoints="xs">Leaving Salary</th>
+                                        <th data-breakpoints="xs">Company Address URL</th>
+                                        <th data-breakpoints="xs">Designation</th>
+                                        <th data-breakpoints="">Action</th> 
+                                </tr>
+                        </thead>
+                        <tbody  id="after_add">
+                            <tr ng-repeat="vals in list">
+                                <td>{{vals.sno}}</td><td>{{vals.cname}}</td><td>{{vals.type}}</td><td>{{vals.service}}</td><td>{{vals.sal}}</td><td>{{vals.add}}</td><td>{{vals.design}}</td><td><button type="button" ng-click="deleteUpdate(val)" class="btn btn-default add-company-button"><span class="glyphicon glyphicon-trash"></span></button> </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                        <script>
+                        jQuery(function($){
+                            var $editor = $('#editor'),
+                                ft = FooTable.init('#company-table', {
+                                    editing: {
+                                        alwaysShow:true,
+                                        
+                                       
+                                        
+                                    }
+                                });
+
+                        });
+                        </script>
+                    </div>
+                    <div class="submitcontainer">
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <button type="submit" class="btn btn-primary submit-button pull-right" ng-click="addCandidate();" ng-disabled="addcandidate123.$invalid"><i class="fa fa-paper-plane-o"></i>Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                    
+                </div>
+                
+            </div>
+            
+           </div>
+           
+
+    
+                 
+           <!-- Skills Modal -->
+
+        <div class="modal fade" id="skillsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="exampleModalLabel">Skills</h3>
+                  <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button> -->
+                </div>
+                <div class="modal-body">
+                <form name="skillset">
+                  <div class="row">
+                      <div class="form-check col-md-4 col-xs-12" ng-repeat="modals in modalValues">
+                        <label class="form-check-label">
+                            <input class="form-check-input" ng-click="toggleSelection($event)"  name="{{modals.data}}" id={{modals.id}} type="checkbox" value="{{modals.data}}">{{modals.data}}
+                            </label>
+                      </div>
+                    <!-- <div class="form-check col-md-4 col-xs-12">
+                        <label class="form-check-label">
+                        <input class="form-check-input" ng-click="toggleSelection($event)"  name="Programming" id="Programming" type="checkbox" value="Programming">
+                        Programming
+                        </label>
+                    </div>
+                    <div class="form-check col-md-4 col-xs-12">
+                        <label class="form-check-label">
+                        <input class="form-check-input" checked ng-click="toggleSelection($event)" name="Application Development" id="Application" type="checkbox" value="Application Development">
+                        Application Development
+                        </label>
+                    </div>
+                    <div class="form-check col-md-4 col-xs-12">
+                        <label class="form-check-label">
+                        <input class="form-check-input" ng-click="toggleSelection($event)"  name="Project Management" id="Project" type="checkbox" value="Project Management">
+                        Project Management
+                        </label>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="form-check col-md-4 col-xs-12">
+                        <label class="form-check-label">
+                        <input class="form-check-input" ng-click="toggleSelection($event)"  name="Web Development" id="Web" type="checkbox" value="Web Development">
+                        Web Development
+                        </label>
+                    </div>
+                    <div class="form-check col-md-4 col-xs-12">
+                        <label class="form-check-label">
+                        <input class="form-check-input" ng-click="toggleSelection($event)"  name="Database Administration" id="Database" type="checkbox" value="Database Administration">
+                        Database Administration
+                        </label>
+                    </div>
+                    <div class="form-check col-md-4 col-xs-12">
+                        <label class="form-check-label">
+                        <input class="form-check-input" ng-click="toggleSelection($event)"  name="Business Analytics" id="Business" type="checkbox" value="Business Analytics">
+                        Business Analytics
+                        </label>
+                    </div> -->
+
+                  </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        <!-- Script for collapsing navbar -->
+         <script>
+                $(document).ready(function () {
+                    $('#sidebarCollapse').on('click', function () {
+                        $('#sidebar').toggleClass('active');
+                    });
+                    
+                });
+                
+                
+           </script>
+           
+  
